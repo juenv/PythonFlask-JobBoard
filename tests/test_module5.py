@@ -25,8 +25,8 @@ def test_app_job_template_module5():
 
 @pytest.mark.test_app_job_route_module5
 def test_app_job_route_module5():
-    jobs_function = "jobs" in dir(app)
-    assert jobs_function, "Have you created the `jobs` function?"
+    job_function = "job" in dir(app)
+    assert job_function, "Have you created the `job` function?"
 
     result = [
         item
@@ -46,8 +46,8 @@ def test_app_job_route_module5():
 
 @pytest.mark.test_app_job_route_decorator_module5
 def test_app_job_route_decorator_module5():
-    jobs_function = "jobs" in dir(app)
-    assert jobs_function, "Have you created the `jobs` function?"
+    job_function = "job" in dir(app)
+    assert job_function, "Have you created the `job` function?"
 
     job_id = "route:/job/<job_id>" in get_functions(app.job)
     assert job_id, "Have you added a `job_id` parameter to the job function"
@@ -55,8 +55,8 @@ def test_app_job_route_decorator_module5():
 
 @pytest.mark.test_app_job_route_parameter_module5
 def test_app_job_route_parameter_module5():
-    jobs_function = "jobs" in dir(app)
-    assert jobs_function, "Have you created the `jobs` function?"
+    job_function = "job" in dir(app)
+    assert job_function, "Have you created the `job` function?"
 
     job_href = "job:job_id:job:id" in template_functions("_macros", "url_for")
     assert job_href, "Looks like the job title link `href` is incorrect."
@@ -69,8 +69,8 @@ def test_app_job_route_parameter_module5():
 
 @pytest.mark.test_app_job_route_data_module5
 def test_app_job_route_data_module5():
-    jobs_function = "jobs" in dir(app)
-    assert jobs_function, "Have you created the `jobs` function?"
+    job_function = "job" in dir(app)
+    assert job_function, "Have you created the `job` function?"
 
     execute_sql = "execute_sql:SELECT job.id, job.title, job.description, job.salary, employer.id as employer_id, employer.name as employer_name FROM job JOIN employer ON employer.id = job.employer_id WHERE job.id = ?:job_id:single:True"
     result = [item for item in get_functions(app.job) if item.startswith(execute_sql)]
@@ -80,8 +80,8 @@ def test_app_job_route_data_module5():
 
 @pytest.mark.test_app_job_route_pass_data_module5
 def test_app_job_route_pass_data_module5():
-    jobs_function = "jobs" in dir(app)
-    assert jobs_function, "Have you created the `jobs` function?"
+    job_function = "job" in dir(app)
+    assert job_function, "Have you created the `job` function?"
 
     new_render = "render_template:job.html:job:job" in get_functions(app.job)
     assert new_render, "Have you added `job` to the `render_template` call."
